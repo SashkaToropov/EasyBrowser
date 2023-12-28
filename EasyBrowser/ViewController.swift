@@ -11,7 +11,7 @@ import WebKit
 class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com", "youtube.com"]
+    var websites = ["apple.com", "youtube.com","hackingwithswift.com","vk.com","google.com","twitter.com","facebook.com","instagram.com","linkedin.com","pinterest.com","tumblr.com","reddit.com","github.com","stackoverflow.com","medium.com","twitch.tv","telegram.org","whatsapp.com","viber.com","skype.com","slack.com","trello.com","bitbucket.org","dropbox.com","behance.net","dribbble.com","codepen.io","jsfiddle.net",]
     
     override func loadView() {
         webView = WKWebView()
@@ -72,6 +72,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
        }
     }
     
+    func showAlert() {
+        let ac = UIAlertController(title: "Error", message: "This site is blocked", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
             
@@ -87,6 +93,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
             }
             
             decisionHandler(.cancel)
+               showAlert()
     }
 
 }
